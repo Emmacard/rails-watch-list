@@ -1,0 +1,7 @@
+<%= simple_form_for([@list, @bookmark]) do |f|%>
+  <%= f.input :comment %>
+  <!-- drop dow select movie  - f.association is possible because bookmark belongs to movie-->
+  <%= f.association :movie, label_method: :title, value_method: :id %>
+  <%= f.submit %>
+<% end %>
+<!-- this is set at line 1 <form action="/lists/list_id/bookmarks" method="post"></form> -->

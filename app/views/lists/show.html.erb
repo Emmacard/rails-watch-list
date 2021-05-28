@@ -1,8 +1,14 @@
 <h1><%= @list.name %></h1>
 
-<% @list.movies.each do |movie| %>
-  <div>
-    <%= movie.title %> <%= movie.overview %>
-    <%= image_tag movie.poster_url, alt: "movie image" %>
+<% @list.bookmarks.each do |bookmark| %>
+  <div class="movie-card d-flex">
+    <%= image_tag bookmark.movie.poster_url, alt: "movie image" %>
+    <div>
+      <%= bookmark.movie.title %>
+      <%= bookmark.movie.overview %>
+    </div>
   </div>
+    <%= link_to "delete movie", bookmark_path(bookmark), method: :delete %>
 <% end %>
+
+<%= link_to "Add a movie to your list", new_list_bookmark_path(@list) %>
